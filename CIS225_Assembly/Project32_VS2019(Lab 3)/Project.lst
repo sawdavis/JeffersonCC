@@ -1,0 +1,209 @@
+Microsoft (R) Macro Assembler Version 14.29.30153.0	    02/28/24 16:09:21
+Laboratory03.asm					     Page 1 - 1
+
+
+				; Sawyer Davis - Laboratory 02
+				;Date: 02/27/2024
+				;Due:  03/05/2024
+
+				COMMENT *
+				This program computes a midterm average. The program will compute a lab, quiz, homework, and exam average.
+				The program will then weigh the averages and finally calculate the midterm average.
+				*
+
+				.386
+				.model flat,stdcall
+				.stack 4096
+				ExitProcess proto,dwExitCode:dword
+
+ 00000000			.data
+ 00000000 000A 0009 0008		labGrades	word	10, 9, 8, 7	
+	   0007
+ 00000008 04				labSize		byte	($ - labGrades) / TYPE labGrades
+					ALIGN 2
+ 0000000A 0009 0008			quizGrades	word	9, 8
+ 0000000E 0008 0009			hwGrades	word	8, 9
+ 00000012 007A				exam		word	122
+ 00000014 0000 0000 0000		average		word	?, ?, ?, ?
+	   0000
+ 0000001C 0000 0000 0000		wAverage	word	?, ?, ?, ?
+	   0000
+ 00000024 02				quizSize	byte	LENGTHOF quizGrades
+					ALIGN 2
+ 00000026 02				hwSize		byte	SIZEOF hwGrades / TYPE hwGrades
+					ALIGN 2
+ 00000028 0000				midGrade	word	?
+ 00000000			.code
+ 00000000			main proc
+ 00000000  BF 00000014 R		mov		edi, OFFSET average
+				;Calculate Lab Average
+ 00000005  0F B6 0D			movzx	ecx, labSize
+	   00000008 R
+ 0000000C  BE 00000000 R		mov esi, OFFSET labGrades
+ 00000011  66| B8 0000			mov ax, 0
+ 00000015  66| 8B 1E		L1: mov bx, [esi]
+ 00000018  66| 03 C3			add ax, bx
+ 0000001B  83 C6 02			add esi, Type labGrades
+ 0000001E  E2 F5			loop L1
+ 00000020  66| 0F B6 1D			movzx bx, [labSize]
+	   00000008 R
+ 00000028  66| B9 000A			mov cx, 10
+ 0000002C  66| F7 E1			mul cx
+ 0000002F  BA 00000000			mov edx, 0
+ 00000034  66| F7 F3			div bx
+ 00000037  66| 89 07			mov [edi], ax
+ 0000003A  83 C7 02			add edi, TYPE average
+
+				;Calcuate Quiz Average
+ 0000003D  0F B6 0D			movzx	ecx, quizSize
+	   00000024 R
+ 00000044  BE 0000000A R		mov esi, OFFSET quizGrades
+ 00000049  66| B8 0000			mov ax, 0
+ 0000004D  66| 8B 1E		L2: mov bx, [esi]
+ 00000050  66| 03 C3			add ax, bx
+ 00000053  83 C6 02			add esi, Type quizGrades
+ 00000056  E2 F5			loop L2
+ 00000058  66| 0F B6 1D			movzx bx, [quizSize]
+	   00000024 R
+ 00000060  66| B9 000A			mov cx, 10
+ 00000064  66| F7 E1			mul cx
+ 00000067  BA 00000000			mov edx, 0
+ 0000006C  66| F7 F3			div bx
+ 0000006F  66| 89 07			mov [edi], ax
+ 00000072  83 C7 02			add edi, TYPE average
+
+				;Calculate Hw Avergae
+ 00000075  0F B6 0D			movzx	ecx, hwSize
+	   00000026 R
+ 0000007C  BE 0000000E R		mov esi, OFFSET hwGrades
+ 00000081  66| B8 0000			mov ax, 0
+ 00000085  66| 8B 1E		L3: mov bx, [esi]
+ 00000088  66| 03 C3			add ax, bx
+ 0000008B  83 C6 02			add esi, Type hwGrades
+ 0000008E  E2 F5			loop L3
+ 00000090  66| 0F B6 1D			movzx bx, [hwSize]
+	   00000026 R
+ 00000098  66| B9 000A			mov cx, 10
+ 0000009C  66| F7 E1			mul cx
+ 0000009F  BA 00000000			mov edx, 0
+ 000000A4  66| F7 F3			div bx
+ 000000A7  66| 89 07			mov [edi], ax
+ 000000AA  83 C7 02			add edi, TYPE average
+
+				;Calculate Exam Average
+ 000000AD  66| A1			mov ax, exam
+	   00000012 R
+ 000000B3  66| BB 0064			mov bx, 100
+ 000000B7  66| F7 E3			mul bx
+ 000000BA  66| B9 007F			mov cx, 127
+ 000000BE  66| F7 F1			div cx
+ 000000C1  66| 89 07			mov [edi], ax
+
+				;Weigh Averages
+ 000000C4  BE 00000014 R		mov	esi, OFFSET average
+ 000000C9  BF 0000001C R		mov	edi, OFFSET wAverage
+ 000000CE  66| 8B 06			mov ax,	[esi]
+ 000000D1  66| BB 0023			mov bx, 35
+ 000000D5  66| F7 E3			mul bx
+ 000000D8  66| 83 C0 32			add ax, 50
+ 000000DC  66| 89 07			mov [edi], ax
+ 000000DF  83 C6 02			add	esi, TYPE average
+ 000000E2  83 C7 02			add	edi, TYPE wAverage
+
+ 000000E5  66| 8B 06			mov ax,	[esi]
+ 000000E8  66| BB 000A			mov bx, 10
+ 000000EC  66| F7 E3			mul bx
+ 000000EF  66| 83 C0 32			add ax, 50
+ 000000F3  66| 89 07			mov [edi], ax
+ 000000F6  83 C6 02			add	esi, TYPE average
+ 000000F9  83 C7 02			add	edi, TYPE wAverage
+
+ 000000FC  66| 8B 06			mov ax,	[esi]
+ 000000FF  66| BB 000A			mov bx, 10
+ 00000103  66| F7 E3			mul bx
+ 00000106  66| 83 C0 32			add ax, 50
+ 0000010A  66| 89 07			mov [edi], ax
+ 0000010D  83 C6 02			add	esi, TYPE average
+ 00000110  83 C7 02			add	edi, TYPE wAverage
+
+ 00000113  66| 8B 06			mov ax,	[esi]
+ 00000116  66| BB 0019			mov bx, 25
+ 0000011A  66| F7 E3			mul bx
+ 0000011D  66| 83 C0 32			add ax, 50
+ 00000121  66| 89 07			mov [edi], ax
+ 00000124  83 C6 02			add	esi, TYPE average
+ 00000127  83 C7 02			add	edi, TYPE wAverage
+
+				;Calculate Midterm Average
+ 0000012A  BE 0000001C R		mov	esi, OFFSET wAverage
+ 0000012F  66| 8B 06			mov ax, [esi]
+ 00000132  83 C6 02			add esi, TYPE wAverage
+ 00000135  66| 03 06			add ax, [esi]
+ 00000138  83 C6 02			add esi, TYPE wAverage
+ 0000013B  66| 03 06			add ax, [esi]
+ 0000013E  83 C6 02			add esi, TYPE wAverage
+ 00000141  66| 03 06			add ax, [esi]
+ 00000144  66| B9 0050			mov cx, 80
+ 00000148  BA 00000000			mov edx, 0
+ 0000014D  66| F7 F1			div cx
+ 00000150  66| A3			mov midGrade, ax
+	   00000028 R
+
+					invoke ExitProcess,0
+ 00000156  6A 00	   *	    push   +000000000h
+ 00000158  E8 00000000 E   *	    call   ExitProcess
+ 0000015D			main endp
+				end main
+Microsoft (R) Macro Assembler Version 14.29.30153.0	    02/28/24 16:09:21
+Laboratory03.asm					     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 0000002A DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000015D DWord	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000015D Public STDCALL
+  L1 . . . . . . . . . . . . . .	L Near	 00000015 _TEXT	
+  L2 . . . . . . . . . . . . . .	L Near	 0000004D _TEXT	
+  L3 . . . . . . . . . . . . . .	L Near	 00000085 _TEXT	
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+average  . . . . . . . . . . . .	Word	 00000014 _DATA	
+exam . . . . . . . . . . . . . .	Word	 00000012 _DATA	
+hwGrades . . . . . . . . . . . .	Word	 0000000E _DATA	
+hwSize . . . . . . . . . . . . .	Byte	 00000026 _DATA	
+labGrades  . . . . . . . . . . .	Word	 00000000 _DATA	
+labSize  . . . . . . . . . . . .	Byte	 00000008 _DATA	
+midGrade . . . . . . . . . . . .	Word	 00000028 _DATA	
+quizGrades . . . . . . . . . . .	Word	 0000000A _DATA	
+quizSize . . . . . . . . . . . .	Byte	 00000024 _DATA	
+wAverage . . . . . . . . . . . .	Word	 0000001C _DATA	
+
+	   0 Warnings
+	   0 Errors
