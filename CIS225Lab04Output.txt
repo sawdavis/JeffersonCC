@@ -1,0 +1,17 @@
+Enter the number of visits: 7
+Enter hourly rate (in whole dollars): 100
+Enter the hours for this job: 4
+Enter the code for this job (1-nomral) (2-night/weekend): 1
+Enter the hours for this job: 3
+Enter the code for this job (1-nomral) (2-night/weekend): 2
+Enter the hours for this job: 12
+Enter the code for this job (1-nomral) (2-night/weekend): 1
+Enter the hours for this job: 4
+Enter the code for this job (1-nomral) (2-night/weekend): 2
+Enter the hours for this job: 5
+Enter the code for this job (1-nomral) (2-night/weekend): 1
+Enter the hours for this job: 6
+Enter the code for this job (1-nomral) (2-night/weekend): 2
+Enter the hours for this job: 5
+Enter the code for this job (1-nomral) (2-night/weekend): 2
+Your gross pay is $5700

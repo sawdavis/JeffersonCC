@@ -1,0 +1,12 @@
+-Employee 1-
+Total: +1.0900000E+000
+Average: +2.7250000E-001
+-Employee 2-
+Total: +7.1400000E+000
+Average: +1.7850000E+000
+-Employee 3-
+Total: +7.6700000E+000
+Average: +2.5566666E+000
+-Employee 4-
+Total: +7.1700000E+000
+Average: +1.4340000E+000

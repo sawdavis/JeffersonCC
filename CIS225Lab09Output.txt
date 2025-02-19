@@ -1,0 +1,10 @@
+Enter the number(POSITIVE): -1
+Enter the number(POSITIVE): 255
+Enter the base (2-16): 16
+The converted number is FF
+Would you like to continue(Y/N): Y
+Enter the number(POSITIVE): 255
+Enter the base (2-16): 1
+Enter the base (2-16): 2
+The converted number is 11111111
+Would you like to continue(Y/N): N

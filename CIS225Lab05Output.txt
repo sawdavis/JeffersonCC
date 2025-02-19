@@ -1,0 +1,40 @@
+Enter your name: Sawyer
+Enter your answer(A-D): a
+Enter your ANSWER(MUST BE A-D): A
+Enter your answer(A-D): B
+Enter your answer(A-D): C
+Enter your answer(A-D): D
+Enter your answer(A-D): B
+Enter your answer(A-D): C
+Enter your answer(A-D): D
+Enter your answer(A-D): A
+Enter your answer(A-D): C
+Enter your answer(A-D): B
+Enter your answer(A-D): D
+Enter your answer(A-D): B
+Student Name: Sawyer
+Number Correct: 11
+Number Incorrect: 1
+Grade: 92
+Letter Grade: A
+
+Dump of offset 00406000
+-------------------------------
+53 61 77 79 65 72 00 0A 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+41 42 43 44 42 43 44 41 43 42 44 42 41 42 43 44
+42 43 44 41 43 42 44 41 0B 01 5C 00 41 45 6E 74
+65 72 20 79 6F 75 72 20 6E 61 6D 65 3A 20 00 45
+6E 74 65 72 20 79 6F 75 72 20 61 6E 73 77 65 72
+28 41 2D 44 29 3A 20 00 45 6E 74 65 72 20 79 6F
+75 72 20 41 4E 53 57 45 52 28 4D 55 53 54 20 42
+45 20 41 2D 44 29 3A 20 00 53 74 75 64 65 6E 74
+20 4E 61 6D 65 3A 20 00 4E 75 6D 62 65 72 20 43
+6F 72 72 65 63 74 3A 20 00 4E 75 6D 62 65 72 20
+49 6E 63 6F 72 72 65 63 74 3A 20 00 47 72 61 64
+65 3A 20 00 4C 65 74 74 65 72 20 47 72 61 64 65
+
+
