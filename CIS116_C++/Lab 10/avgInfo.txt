@@ -1,0 +1,6 @@
+Date: 04/13/2021
+Avg. Air Temp     Avg. Wind Speed            Avg. Humidity        Avg. Bar Pressure
+        71.62               11.08                     0.23                    28.77
+Date: 04/13/2021
+Avg. Air Temp     Avg. Wind Speed            Avg. Humidity        Avg. Bar Pressure
+        71.62               11.08                     0.23                    28.77
