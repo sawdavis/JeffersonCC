@@ -1,0 +1,40 @@
+Hershey Bar
+1
+1.99
+23
+Reese's Cup
+2
+2.99
+17
+Twix
+2
+1.79
+12
+Snickers
+1
+1.99
+29
+Rolo
+10
+2.19
+11
+Milky Way
+1
+1.99
+31
+Three Musketeer
+3
+2.29
+25
+M&M's
+124
+2.99
+98
+Payday
+1
+1.79
+18
+Peanut M&M's
+118
+3.19
+91
