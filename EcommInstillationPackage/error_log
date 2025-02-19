@@ -1,0 +1,22 @@
+[07-May-2024 00:33:53 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/manage_products.php on line 79
+[07-May-2024 00:33:53 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/manage_products.php on line 81
+[07-May-2024 00:33:53 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/manage_products.php on line 82
+[07-May-2024 00:33:53 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/manage_products.php on line 83
+[07-May-2024 00:33:53 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/manage_products.php on line 84
+[07-May-2024 00:33:53 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/manage_products.php on line 100
+[07-May-2024 00:33:53 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/manage_products.php on line 105
+[07-May-2024 00:33:53 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/manage_products.php on line 110
+[07-May-2024 00:33:53 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/manage_products.php on line 115
+[07-May-2024 22:10:17 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/login_process.php on line 40
+[07-May-2024 20:44:38 America/New_York] PHP Fatal error:  Uncaught Error: Class "MySQLDump" not found in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/System_Backup.php:37
+Stack trace:
+#0 {main}
+  thrown in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/System_Backup.php on line 37
+[07-May-2024 20:44:49 America/New_York] PHP Fatal error:  Uncaught Error: Class "MySQLDump" not found in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/System_Backup.php:37
+Stack trace:
+#0 {main}
+  thrown in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/System_Backup.php on line 37
+[08-May-2024 10:59:59 America/New_York] PHP Fatal error:  Uncaught Error: Class "MySQLDump" not found in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/System_Backup.php:37
+Stack trace:
+#0 {main}
+  thrown in /home/gt24xpouyivp/public_html/ecomm.jeffersonccit.com/System_Backup.php on line 37

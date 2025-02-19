@@ -1,0 +1,107 @@
+
+
+.hbar {
+	display: flex;
+	width: 99%;
+	justify-content: space-between;
+	float: left;
+	//display: inline-block;
+	//index: 15;
+	//height: 15px;
+	padding: 15px;
+	//border: 0.5px solid black;
+	//position:fixed;
+	//_position:absolute;
+}
+
+.hbar_button {
+		
+	padding: 15px;
+	border: 2px solid black;
+	
+}
+
+.check {
+	padding: 15px;
+	border: 2px solid black;
+	float: left;
+	clear: left;
+	display: inline-block;
+
+}
+
+.text {
+	text-size: 10px;
+}
+
+.main {
+	float: left;
+	clear: left;
+	//display:inline-block;
+	margin: auto;
+	height: 300px; 
+	width: 70%;
+	border: 2px solid gray;
+	overflow-y: auto;
+	//position: fixed;
+	//_position: absolute;
+	clear: both;
+
+
+	/* Style for a scrolling list? Maybe table */ 
+th {
+	border: 2px solid black;
+	font-size: 20px;
+	text: bold;
+				
+}
+
+.tables, td {
+	font-size: 15px;
+	text-align: center;
+	border: 1px solid dark gray;
+				
+}
+
+		
+footer {
+	float: left;
+	clear: left;
+	//display:inline-block;
+	text-align: right;
+	justify-content: right;
+	//position:fixed;
+	//_position:absolute;
+}
+
+//Styles for Prod Manager//
+
+.form_title {
+	clear:left;
+float: left;
+	font-size: 20px;
+	font-style: italic;
+	font-style: bold;
+	padding: 3px;
+	
+
+}
+
+.add_prod {
+	
+	float: left;
+	border: 2px solid gray;
+	height: 300px;
+	overflow-y: auto;
+	clear: left;
+
+}
+
+.manage_prod {
+	
+	float: left;
+	border: 2px solid gray;
+	height: 500px;
+	overflow-y: auto;
+	//clear: left;
+}		
