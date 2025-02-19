@@ -1,0 +1,12 @@
+XLarge Box Price
+12.00
+Large Box Price
+13.65
+Medium Box Price
+13.20
+Small Box Price
+18.68
+Individual Box Price
+14.20
+Shovel Price
+13.88
