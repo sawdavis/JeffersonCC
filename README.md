@@ -46,7 +46,7 @@ The repository is structured to make it easy to navigate through different cours
 - Backend: PHP and MySQL.
 - Documentation includes installation, setup, and deployment instructions.
 
-📁 **/Ecommerce_WebSystem/**
+📁 **/EcommInstillationPackage/**
 - **/docs/**: Detailed documentation.
 - **/frontend/**: HTML/CSS/JavaScript.
 - **/backend/**: PHP/MySQL.
