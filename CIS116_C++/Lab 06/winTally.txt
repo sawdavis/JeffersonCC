@@ -1,0 +1,3 @@
+Human Wins: 6
+Draws: 2
+CPU Wins: 2

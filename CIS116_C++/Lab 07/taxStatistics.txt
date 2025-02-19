@@ -1,0 +1,15 @@
+
+
+                          City Of Bikini Bottom
+
+                         Property Tax Statistics
+
+                             As of 10/30/2022
+
+Number of assessments below $10,000:                  0
+Number of assessments between $10,000-$30,000:        1
+Number of assessments between $30,001-$60,000:        4
+Number of assessments above $60,000:                  4
+
+Total Taxes:                                   40713.64
+
