@@ -1,0 +1,214 @@
+Microsoft (R) Macro Assembler Version 14.29.30153.0	    02/14/24 15:57:35
+Laboratory02.asm					     Page 1 - 1
+
+
+				; Sawyer Davis - Laboratory 02
+				;Date: 02/13/2024
+				;Due:  02/20/2024
+
+				COMMENT *
+				This program manages information for snow blowing business. The program will take the dimensions of the driveway, calculate a square footage,
+				and then calcuate the number of passes and the time it will take. Using this information an hourly cost and maintnence cost will be applied. 
+				Lastly a total will be computed.
+				*
+
+				.386
+				.model flat,stdcall
+				.stack 4096
+				ExitProcess proto,dwExitCode:dword
+
+ 00000000			.data
+ 00000000 00000014			capacity	dword	20, 15, 10, 5, 1
+	   0000000F
+	   0000000A
+	   00000005
+	   00000001
+ 00000014 00000B54			cost		dword	2900, 2575, 2150, 1625, 1135
+	   00000A0F
+	   00000866
+	   00000659
+	   0000046F
+ 00000028 00000591			shovelCost	dword	1425
+ 0000002C 00000000			cases		dword	?, ?, ?, ?, ?
+	   00000000
+	   00000000
+	   00000000
+	   00000000
+ 00000040 00000000			sCost		dword	0, 0, 0, 0, 0
+	   00000000
+	   00000000
+	   00000000
+	   00000000
+ 00000054 00000000			pCost		dword   0, 0, 0, 0, 0
+	   00000000
+	   00000000
+	   00000000
+	   00000000
+ 00000068 00000000			totals		dword	?, ?, ?
+	   00000000
+	   00000000
+ 00000074 00000034			order		dword 52
+ 00000000			.code
+ 00000000			main proc
+					;Calculate Cases XL
+ 00000000  BA 00000000			mov edx, 0
+ 00000005  A1 00000074 R		mov eax, [order]
+ 0000000A  8B 1D 00000000 R		mov ebx, [capacity]
+ 00000010  F7 F3			div	ebx
+ 00000012  A3 0000002C R		mov [cases], eax
+ 00000017  89 15 00000074 R		mov [order], edx
+
+					;Calculate Product Cost XL
+ 0000001D  F7 25 00000000 R		mul [capacity]
+ 00000023  F7 25 00000028 R		mul [shovelCost]
+ 00000029  A3 00000054 R		mov [pCost], eax
+
+					;Calculate Shipping Cost XL
+ 0000002E  A1 0000002C R		mov eax, [cases]
+ 00000033  F7 25 00000014 R		mul [cost]
+ 00000039  A3 00000040 R		mov [sCost], eax
+
+					;Calculate Cases L
+ 0000003E  BA 00000000			mov edx, 0
+ 00000043  A1 00000074 R		mov eax, [order]
+ 00000048  8B 1D 00000004 R		mov ebx, [capacity+4]
+ 0000004E  F7 F3			div	ebx
+ 00000050  A3 00000030 R		mov [cases+4], eax
+ 00000055  89 15 00000074 R		mov [order], edx
+
+					;Calculate Product Cost L
+ 0000005B  F7 25 00000004 R		mul [capacity+4]
+ 00000061  F7 25 00000028 R		mul [shovelCost]
+ 00000067  A3 00000058 R		mov [pCost+4], eax
+
+					;Calculate Shipping Cost L
+ 0000006C  A1 00000030 R		mov eax, [cases+4]
+ 00000071  F7 25 00000018 R		mul [cost+4]
+ 00000077  A3 00000044 R		mov [sCost+4], eax
+					
+
+					;Calculate Cases M
+ 0000007C  BA 00000000			mov edx, 0
+ 00000081  A1 00000074 R		mov eax, [order]
+ 00000086  8B 1D 00000008 R		mov ebx, [capacity+8]
+ 0000008C  F7 F3			div	ebx
+ 0000008E  A3 00000034 R		mov [cases+8], eax
+ 00000093  89 15 00000074 R		mov [order], edx
+
+					;Calculate Product Cost M
+ 00000099  F7 25 00000008 R		mul [capacity+8]
+ 0000009F  F7 25 00000028 R		mul [shovelCost]
+ 000000A5  A3 0000005C R		mov [pCost+8], eax
+
+					;Calculate Shipping Cost M
+ 000000AA  A1 00000034 R		mov eax, [cases+8]
+ 000000AF  F7 25 0000001C R		mul [cost+8]
+ 000000B5  A3 00000048 R		mov [sCost+8], eax
+
+
+					;Calculate Cases S
+ 000000BA  BA 00000000			mov edx, 0
+ 000000BF  A1 00000074 R		mov eax, [order]
+ 000000C4  8B 1D 0000000C R		mov ebx, [capacity+12]
+ 000000CA  F7 F3			div	ebx
+ 000000CC  A3 00000038 R		mov [cases+12], eax
+ 000000D1  89 15 00000074 R		mov [order], edx
+
+					;Calculate Product Cost S
+ 000000D7  F7 25 0000000C R		mul [capacity+12]
+ 000000DD  F7 25 00000028 R		mul [shovelCost]
+ 000000E3  A3 00000060 R		mov [pCost+12], eax
+
+					;Calculate Shipping Cost S
+ 000000E8  A1 00000038 R		mov eax, [cases+12]
+ 000000ED  F7 25 00000020 R		mul [cost+12]
+ 000000F3  A3 0000004C R		mov [sCost+12], eax
+
+
+					;Calculate Cases I
+ 000000F8  BA 00000000			mov edx, 0
+ 000000FD  A1 00000074 R		mov eax, [order]
+ 00000102  8B 1D 00000010 R		mov ebx, [capacity+16]
+ 00000108  F7 F3			div	ebx
+ 0000010A  A3 0000003C R		mov [cases+16], eax
+ 0000010F  89 15 00000074 R		mov [order], edx
+
+					;Calculate Product Cost I
+ 00000115  F7 25 00000010 R		mul [capacity+16]
+ 0000011B  F7 25 00000028 R		mul [shovelCost]
+ 00000121  A3 00000064 R		mov [pCost+16], eax
+
+					;Calculate Shipping Cost I
+ 00000126  A1 0000003C R		mov eax, [cases+16]
+ 0000012B  F7 25 00000024 R		mul [cost+16]
+ 00000131  A3 00000050 R		mov [sCost+16], eax
+
+					;Calculate Totals
+ 00000136  A1 00000040 R		mov eax, [sCost]
+ 0000013B  03 05 00000044 R		add eax, [sCost+4]
+ 00000141  03 05 00000048 R		add eax, [sCost+8]
+ 00000147  03 05 0000004C R		add eax, [sCost+12]
+ 0000014D  03 05 00000050 R		add eax, [sCost+16]
+ 00000153  A3 00000068 R		mov [totals], eax
+ 00000158  A1 00000054 R		mov eax, [pCost]
+ 0000015D  03 05 00000058 R		add eax, [pCost+4]
+ 00000163  03 05 0000005C R		add eax, [pCost+8]
+ 00000169  03 05 00000060 R		add eax, [pCost+12]
+ 0000016F  03 05 00000064 R		add eax, [pCost+16]
+ 00000175  A3 0000006C R		mov [totals+4], eax
+ 0000017A  03 05 00000068 R		add eax, [totals]
+ 00000180  A3 00000070 R		mov [totals+8], eax
+
+					invoke ExitProcess,0
+ 00000185  6A 00	   *	    push   +000000000h
+ 00000187  E8 00000000 E   *	    call   ExitProcess
+ 0000018C			main endp
+				end main
+Microsoft (R) Macro Assembler Version 14.29.30153.0	    02/14/24 15:57:35
+Laboratory02.asm					     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000078 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000018C DWord	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000018C Public STDCALL
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+capacity . . . . . . . . . . . .	DWord	 00000000 _DATA	
+cases  . . . . . . . . . . . . .	DWord	 0000002C _DATA	
+cost . . . . . . . . . . . . . .	DWord	 00000014 _DATA	
+order  . . . . . . . . . . . . .	DWord	 00000074 _DATA	
+pCost  . . . . . . . . . . . . .	DWord	 00000054 _DATA	
+sCost  . . . . . . . . . . . . .	DWord	 00000040 _DATA	
+shovelCost . . . . . . . . . . .	DWord	 00000028 _DATA	
+totals . . . . . . . . . . . . .	DWord	 00000068 _DATA	
+
+	   0 Warnings
+	   0 Errors

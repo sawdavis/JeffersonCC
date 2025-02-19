@@ -1,0 +1,147 @@
+Microsoft (R) Macro Assembler Version 14.29.30153.0	    02/06/24 10:31:50
+Laboratory01.asm					     Page 1 - 1
+
+
+				; Sawyer Davis - Laboratory 01
+				;Date: 02/06/2024
+				;Due:  02/13/24
+
+				COMMENT *
+				This program manages information for snow blowing business. The program will take the dimensions of the driveway, calculate a square footage,
+				and then calcuate the number of passes and the time it will take. Using this information an hourly cost and maintnence cost will be applied. 
+				Lastly a total will be computed.
+				*
+
+				.386
+				.model flat,stdcall
+				.stack 4096
+				ExitProcess proto,dwExitCode:dword
+
+ 00000000			.data
+ 00000000 0064				dLength word 100
+ 00000002 0050				dWidth word 80
+ 00000004 0003				speed word 3
+ 00000006 0012				widthSB word 18
+ 00000008 0640				rate word 1600
+ 0000000A 0320				maintnence word 800
+ 0000000C 0000				numPasses word ?
+ 0000000E 0000				passTime word ?
+ 00000010 0000				totalTime word  ?
+ 00000012 0000				laborCost word ?
+ 00000014 0000				totalCost word ?
+
+ 00000000			.code
+ 00000000			main proc
+				;Compute Num Passes
+ 00000000  BA 00000000			mov edx, 0
+ 00000005  66| A1			mov ax, dWidth
+	   00000002 R
+ 0000000B  66| 8B 1D			mov bx, widthSB
+	   00000006 R
+ 00000012  66| B9 000C			mov cx, 12
+ 00000016  66| F7 E1			mul cx
+ 00000019  66| F7 F3			div bx
+ 0000001C  66| 83 C0 01			add ax, 1
+ 00000020  66| A3			mov numPasses, ax
+	   0000000C R
+
+				;Compute Pass Time
+ 00000026  BA 00000000			mov edx, 0
+ 0000002B  66| A1			mov ax, dLength
+	   00000000 R
+ 00000031  66| 8B 1D			mov bx, speed
+	   00000004 R
+ 00000038  66| F7 F3			div bx
+ 0000003B  66| 83 C0 01			add ax, 1
+ 0000003F  66| A3			mov passTime, ax
+	   0000000E R
+
+				;Compute Total Time
+ 00000045  BA 00000000			mov edx, 0
+ 0000004A  66| A1			mov ax, numPasses
+	   0000000C R
+ 00000050  66| 8B 1D			mov bx, passTime
+	   0000000E R
+ 00000057  66| F7 E3			mul bx
+ 0000005A  66| BB 003C			mov bx, 60
+ 0000005E  66| F7 F3			div bx
+ 00000061  66| 83 C0 01			add ax, 1
+ 00000065  66| A3			mov totalTime, ax
+	   00000010 R
+
+				;Compute Cost of Labor
+ 0000006B  66| A1			mov ax, totalTime
+	   00000010 R
+ 00000071  66| 8B 1D			mov bx, rate
+	   00000008 R
+ 00000078  66| F7 E3			mul bx
+ 0000007B  66| A3			mov laborCost, ax
+	   00000012 R
+
+				;Compute Total Cost
+ 00000081  66| A1			mov ax, totalTime
+	   00000010 R
+ 00000087  66| 8B 1D			mov bx, maintnence
+	   0000000A R
+ 0000008E  66| F7 E3			mul bx
+ 00000091  66| 03 05			add ax, laborCost
+	   00000012 R
+ 00000098  66| A3			mov totalCost, ax
+	   00000014 R
+
+					invoke ExitProcess,0
+ 0000009E  6A 00	   *	    push   +000000000h
+ 000000A0  E8 00000000 E   *	    call   ExitProcess
+ 000000A5			main endp
+				end main
+Microsoft (R) Macro Assembler Version 14.29.30153.0	    02/06/24 10:31:50
+Laboratory01.asm					     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000016 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 000000A5 DWord	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 000000A5 Public STDCALL
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+dLength  . . . . . . . . . . . .	Word	 00000000 _DATA	
+dWidth . . . . . . . . . . . . .	Word	 00000002 _DATA	
+laborCost  . . . . . . . . . . .	Word	 00000012 _DATA	
+maintnence . . . . . . . . . . .	Word	 0000000A _DATA	
+numPasses  . . . . . . . . . . .	Word	 0000000C _DATA	
+passTime . . . . . . . . . . . .	Word	 0000000E _DATA	
+rate . . . . . . . . . . . . . .	Word	 00000008 _DATA	
+speed  . . . . . . . . . . . . .	Word	 00000004 _DATA	
+totalCost  . . . . . . . . . . .	Word	 00000014 _DATA	
+totalTime  . . . . . . . . . . .	Word	 00000010 _DATA	
+widthSB  . . . . . . . . . . . .	Word	 00000006 _DATA	
+
+	   0 Warnings
+	   0 Errors
