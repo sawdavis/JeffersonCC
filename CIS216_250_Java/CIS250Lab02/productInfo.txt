@@ -1,0 +1,16 @@
+Blueberry
+10.99
+Cherry
+11.99
+Apple
+12.99
+Raspberry
+13.99
+Raisin
+9.99
+Chocolate
+8.99
+Oreo
+7.99
+Creme
+6.99
